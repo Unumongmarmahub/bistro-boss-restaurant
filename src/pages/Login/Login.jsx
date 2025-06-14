@@ -10,12 +10,13 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const [disabled, setDisabled] = useState(true);
+  const [ setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+  console.log(("state in the location", location.state));
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -107,8 +108,9 @@ const Login = () => {
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>
+                {/* apply disabled for re captcha  */}
                 <input
-                  disabled={disabled}
+                  disabled={false}
                   className="btn btn-neutral mt-4"
                   type="submit"
                   value="Login"
